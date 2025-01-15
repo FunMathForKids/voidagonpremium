@@ -115,9 +115,46 @@
             cursor: pointer;
             font-family: 'Press Start 2P', sans-serif;
         }
+
+        /* Notification Style */
+        .notification {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            font-family: 'Press Start 2P', sans-serif;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .notification .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
+<!-- Notification with hyperlink to blog HTML file -->
+<div class="notification">
+    <span>
+        <strong>Voidagon XYZ is under attack.</strong><br>
+        Please <a href="blog.html" style="color: blue; text-decoration: underline;">read this</a> to help us.
+    </span>
+    <button class="close-btn" id="notification-close-btn">X</button>
+</div>
 
     <!-- Password Modal -->
     <div class="password-modal" id="password-modal">
@@ -158,6 +195,12 @@
                 alert('Incorrect Password! Please try again.');
             }
         }
+
+        // Close notification
+        const notificationCloseBtn = document.getElementById('notification-close-btn');
+        notificationCloseBtn.addEventListener('click', () => {
+            document.querySelector('.notification').style.display = 'none';
+        });
     </script>
 
 </body>
